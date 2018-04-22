@@ -4,6 +4,7 @@ import requests
 
 class HttpProcessor(BaseHTTPRequestHandler):
     def do_GET(self):
+        print(0)
         body = self.rfile.read().decode('utf-8')
         print(body)
 
@@ -13,6 +14,7 @@ class HttpProcessor(BaseHTTPRequestHandler):
         self.wfile.write('Не110!'.encode())
 
     def do_POST(self):
+        print(0)
         body = self.rfile.read().decode('utf-8')
         print(body)
 

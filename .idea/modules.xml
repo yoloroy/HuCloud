@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/HuWind.iml" filepath="$PROJECT_DIR$/.idea/HuWind.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/HuCloud.iml" filepath="$PROJECT_DIR$/.idea/HuCloud.iml" />
     </modules>
   </component>
 </project>

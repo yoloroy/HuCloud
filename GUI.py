@@ -99,7 +99,7 @@ class OldLabel:
         self.text_pos = text_position
         self.font_color = to_color(text_color)
         self.bg_color = None if bg_color == -1 else to_color(bg_color)
-        self.font = pygame.font.Font(None, self.Rect.height - 4)
+        self.font = pygame.font.Font(None, self.Rect.height)
         self.rendered_text = None
         self.rendered_rect = None
 
@@ -272,7 +272,7 @@ class Button(OldLabel):
         return False
 
     def render(self, surface, text=None):
-        surface.fill(self.color, self.Rect)
+    #    surface.fill(self.color, self.Rect)
         text = ''
         for t in self.text:
             text += t
@@ -282,23 +282,23 @@ class Button(OldLabel):
         self.rendered_text = self.font.render(text, 1, self.font_color)
 
         if self.pressed and self.active:
-            color1 = pygame.Color("black")
-            color2 = pygame.Color("white")
+    #        color1 = pygame.Color("black")
+    #        color2 = pygame.Color("white")
             self.rendered_rect = self.rendered_text.get_rect(centerx=self.Rect.centerx + 4,
                                                              centery=self.Rect.centery + 2)
         else:
-            color1 = pygame.Color("white")
-            color2 = pygame.Color("black")
+    #        color1 = pygame.Color("white")
+    #        color2 = pygame.Color("black")
             self.rendered_rect = self.rendered_text.get_rect(centerx=self.Rect.centerx + 3,
                                                              centery=self.Rect.centery)
-        # рисуем границу
-        pygame.draw.rect(surface, color1, self.Rect, 2)
-        pygame.draw.line(surface, color2, (self.Rect.right - 1, self.Rect.top),
-                         (self.Rect.right - 1, self.Rect.bottom), 2)
-        pygame.draw.line(surface, color2, (self.Rect.left, self.Rect.bottom - 1),
-                         (self.Rect.right, self.Rect.bottom - 1), 2)
+    #    # рисуем границу
+    #    pygame.draw.rect(surface, color1, self.Rect, 2)
+    #    pygame.draw.line(surface, color2, (self.Rect.right - 1, self.Rect.top),
+    #                     (self.Rect.right - 1, self.Rect.bottom), 2)
+    #    pygame.draw.line(surface, color2, (self.Rect.left, self.Rect.bottom - 1),
+    #                     (self.Rect.right, self.Rect.bottom - 1), 2)
         # выводим текст
-        surface.blit(self.rendered_text, self.rendered_rect)
+        surface.blit(self.rendered_text, self.Rect)
 
     def get_event(self, event):
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
