@@ -314,7 +314,7 @@ class Button(OldLabel):
 
 
 class Checkbox:
-    def __init__(self, rect, text, text_color='white'):
+    def __init__(self, rect: object, text: object, text_color: object = 'white') -> object:
         self.Rect = pygame.Rect(rect)
         self.text = text
         self.color = pygame.Color('blue')
@@ -514,3 +514,20 @@ class GIFImage(object):
         new.ptime = self.ptime
         new.reversed = self.reversed
         return new
+
+try:
+    from tkinter import colorchooser
+
+    def palette(color=None, **option):
+        if type(color) is pygame.Color:
+            color = color.r, color.g, color.b
+        c = colorchooser.askcolor(color, **option)[1]
+        try:
+            return pygame.Color(c), c
+        except ValueError:
+            return None
+except ImportError:
+    print("\x1b[31;1mPlease, install Tkinter (pip install python3-tk)\x1b[0m")
+
+    def pallete(color=None, **option):
+        return pygame.Color, color
